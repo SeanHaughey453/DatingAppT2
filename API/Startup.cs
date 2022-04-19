@@ -36,6 +36,7 @@ namespace API
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -56,6 +57,8 @@ namespace API
 
             app.UseRouting();
 
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+                            //headers such as authentications headers from angular to api/ allow any method post put get etc. //origin means can do any of this but only if it comes from that url
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
