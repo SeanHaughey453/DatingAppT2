@@ -57,7 +57,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
                             //headers such as authentications headers from angular to api/ allow any method post put get etc. //origin means can do any of this but only if it comes from that url
             app.UseAuthorization();
 
